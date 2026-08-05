@@ -1,1 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PGS Journey — Talent and Learning Ecosystem Development</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Cinzel:wght@500;600;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<header class="nav">
+  <div class="brand">
+    <div class="brand-seal"><img src="images/sdo-balanga-city-seal.png" alt="SDO Balanga City seal"></div>
+    <span class="brand-text">PGS Journey</span>
+  </div>
+  <nav class="links">
+    <a href="#journey-map">Our Journey</a>
+    <a href="#strategy-map">Strategy Map</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#scorecard">Scorecard</a>
+    <a href="#orp">ORP</a>
+    <a href="#in-action">In-Action</a>
+    <a href="#org-chart">Org Chart</a>
+  </nav>
+</header>
+
+<section class="ocean-bg hero">
+  <span class="eyebrow">Schools Division Office of Balanga City</span>
+  <h1>PGS Journey</h1>
+  <h2 class="sub">Talent and Learning Ecosystem Development</h2>
+  <p class="tag">Chart the course. Follow the map. Unlock every chest along the way — from strategy to action — as we navigate the Performance Governance System together.</p>
+  <div class="hero-cta">
+    <a href="#chest-map" class="btn btn-gold">Begin the Journey ⚓</a>
+    <a href="#org-chart" class="btn btn-outline">Meet the Crew</a>
+  </div>
+</section>
+
+<section class="map-section ocean-bg" id="chest-map">
+  <div class="map-frame">
+    <svg class="compass" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#e8bf5a" stroke-width="2"/><path d="M50 10 L58 50 L50 90 L42 50 Z" fill="#e8bf5a" opacity="0.7"/></svg>
+    <div class="map-heading">
+      <p class="eyebrow" style="margin-bottom:14px;">The Treasure Map</p>
+      <h2>Five Chests, One Journey</h2>
+      <p>Every chest holds a piece of our roadmap toward excellence. Click a chest to open it.</p>
+    </div>
+    <div class="chest-grid">
+      <a href="#strategy-map" class="chest">
+        <div class="chest-ring"></div><div class="chest-ring right"></div>
+        <div class="chest-box"></div>
+        <div class="chest-label">Strategy Map</div>
+        <div class="chest-desc">Our destination — the vision and strategic objectives guiding the voyage.</div>
+      </a>
+      <a href="#roadmap" class="chest">
+        <div class="chest-ring"></div><div class="chest-ring right"></div>
+        <div class="chest-box"></div>
+        <div class="chest-label">Roadmap</div>
+        <div class="chest-desc">The route — key milestones and timelines charted year by year.</div>
+      </a>
+      <a href="#scorecard" class="chest">
+        <div class="chest-ring"></div><div class="chest-ring right"></div>
+        <div class="chest-box"></div>
+        <div class="chest-label">Scorecard</div>
+        <div class="chest-desc">The compass — measures and targets that tell us if we're on course.</div>
+      </a>
+      <div class="row2">
+        <a href="#orp" class="chest">
+          <div class="chest-ring"></div><div class="chest-ring right"></div>
+          <div class="chest-box"></div>
+          <div class="chest-label">ORP</div>
+          <div class="chest-desc">Organizational Result Plan — turning strategy into structure.</div>
+        </a>
+        <a href="#in-action" class="chest">
+          <div class="chest-ring"></div><div class="chest-ring right"></div>
+          <div class="chest-box"></div>
+          <div class="chest-label">In-Action</div>
+          <div class="chest-desc">The log book — stories and evidence of the strategy at work.</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="map-section ocean-bg" id="journey-map">
+  <div class="map-frame">
+    <svg class="compass" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#e8bf5a" stroke-width="2"/><path d="M50 10 L58 50 L50 90 L42 50 Z" fill="#e8bf5a" opacity="0.7"/></svg>
+    <div class="map-heading">
+      <p class="eyebrow" style="margin-bottom:14px;">The Voyage</p>
+      <h2>Our Journey: 2025–2028</h2>
+      <p>Four years, four islands — each stop marks a milestone on the way to the SDO Balanga City Library Commons.</p>
+    </div>
+
+    <div class="journey-3d-wrap" id="journeyWrap">
+      <div class="journey-loading" id="journeyLoading">Charting the waters…</div>
+      <div class="journey-labels" id="journeyLabels"></div>
+    </div>
+
+    <div class="year-controls" id="yearControls">
+      <button class="year-btn" data-year="2025">2025</button>
+      <button class="year-btn active" data-year="2026">2026</button>
+      <button class="year-btn" data-year="2027">2027</button>
+      <button class="year-btn" data-year="2028">2028</button>
+    </div>
+    <p class="journey-caption">Click a year to advance the ancient ship as it searches for the Library Commons' treasure and changes as it gets closer to the objective.</p>
+
+    <div class="kra-panel" id="kraPanel">
+      <div class="kra-panel-head">
+        <h3>Key Result Areas &amp; Deliverables</h3>
+        <span class="kra-year-badge" id="kraYearBadge">2026</span>
+      </div>
+      <p class="kra-target" id="kraTarget"></p>
+      <div class="kra-grid" id="kraGrid"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="strategy-map">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-num">I</span>
+      <div>
+        <p class="kicker">Chest One</p>
+        <h2>Strategy Map</h2>
+      </div>
+    </div>
+    <div class="section-body">
+      <p>The Strategy Map lays out our division's vision, mission, and strategic objectives across the Impact, Position, Core, and Support layers — the same cause-and-effect logic used throughout the Performance Governance System.</p>
+      <div style="margin-top:34px; border:1px solid rgba(232,191,90,.3); border-radius:12px; overflow:hidden; box-shadow:var(--shadow);">
+        <img src="images/sdo-balanga-city-strategy-map-2028-summary.jpg" alt="SDO Balanga City Strategy Map 2028 — Summary" style="display:block; width:100%; height:auto;">
+      </div>
+      <p style="margin-top:14px; text-align:center; font-size:12px; color:var(--parchment-dark); font-weight:300; letter-spacing:.02em;">Strategy Map 2028</p>
+
+      <div style="margin-top:34px; border:1px solid rgba(232,191,90,.3); border-radius:12px; overflow:hidden; box-shadow:var(--shadow);">
+        <img src="images/sdo-balanga-city-strategy-map-2028-detailed-objectives.jpg" alt="SDO Balanga City Strategy Map 2028 — Detailed Objectives" style="display:block; width:100%; height:auto;">
+      </div>
+      <p style="margin-top:14px; text-align:center; font-size:12px; color:var(--parchment-dark); font-weight:300; letter-spacing:.02em;">Strategy Map 2028 — Detailed Strategic Objectives</p>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="roadmap">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-num">II</span>
+      <div>
+        <p class="kicker">Chest Two</p>
+        <h2>Roadmap</h2>
+      </div>
+    </div>
+    <div class="section-body">
+      <p>The Roadmap breaks the strategy into a multi-year timeline — showing what gets tackled first, what builds on what, and when each milestone should be reached on the way to the destination.</p>
+      <div style="margin-top:34px; border:1px solid rgba(232,191,90,.3); border-radius:12px; overflow:hidden; box-shadow:var(--shadow);">
+        <img src="images/talent-learning-ecosystem-development-roadmap.jpg" alt="Talent & Learning Ecosystem Development Roadmap" style="display:block; width:100%; height:auto;">
+      </div>
+      <p style="margin-top:14px; text-align:center; font-size:12px; color:var(--parchment-dark); font-weight:300; letter-spacing:.02em;">Talent &amp; Learning Ecosystem Development Roadmap</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="scorecard">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-num">III</span>
+      <div>
+        <p class="kicker">Chest Three</p>
+        <h2>Scorecard</h2>
+      </div>
+    </div>
+    <div class="section-body">
+      <p>The Scorecard keeps the crew honest — a set of measures and targets, tracked over time, that show whether each strategic objective is on course, at risk, or off track.</p>
+      <div style="margin-top:34px; border:1px solid rgba(232,191,90,.3); border-radius:12px; overflow:hidden; box-shadow:var(--shadow);">
+        <img src="images/support-scorecard.jpg" alt="Support Scorecard" style="display:block; width:100%; height:auto;">
+      </div>
+      <p style="margin-top:14px; text-align:center; font-size:12px; color:var(--parchment-dark); font-weight:300; letter-spacing:.02em;">Support Scorecard</p>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="orp">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-num">IV</span>
+      <div>
+        <p class="kicker">Chest Four</p>
+        <h2>ORP <span style="font-size:14px; color:var(--parchment-dark); font-family:'Poppins'; font-weight:300;">— Organizational Result Plan</span></h2>
+      </div>
+    </div>
+    <div class="section-body">
+      <p>The ORP cascades division-level strategy down into concrete organizational results — assigning accountability to units and offices so every chest connects back to the same map.</p>
+      <div class="month-table">
+        <div class="month-row">
+          <div class="month-row-label">February 2026</div>
+          <div class="month-row-pages">
+            <a class="month-page" href="images/lrmds-orp-february-2026-page-1.jpg" target="_blank" rel="noopener"><img src="images/lrmds-orp-february-2026-page-1.jpg" alt="LRMDS ORP February 2026 page 1"></a>
+            <a class="month-page" href="images/lrmds-orp-february-2026-page-2.jpg" target="_blank" rel="noopener"><img src="images/lrmds-orp-february-2026-page-2.jpg" alt="LRMDS ORP February 2026 page 2"></a>
+            <a class="month-page" href="images/lrmds-orp-february-2026-page-3.jpg" target="_blank" rel="noopener"><img src="images/lrmds-orp-february-2026-page-3.jpg" alt="LRMDS ORP February 2026 page 3"></a>
+          </div>
+        </div>
+        <div class="month-row">
+          <div class="month-row-label">March 2026</div>
+          <div class="month-row-pages">
+            <a class="month-page" href="images/lrmds-orp-march-2026-page-1.jpg" target="_blank" rel="noopener"><img src="images/lrmds-orp-march-2026-page-1.jpg" alt="LRMDS ORP March 2026 page 1"></a>
+            <a class="month-page" href="images/lrmds-orp-march-2026-page-2.jpg" target="_blank" rel="noopener"><img src="images/lrmds-orp-march-2026-page-2.jpg" alt="LRMDS ORP March 2026 page 2"></a>
+            <a class="month-page" href="images/lrmds-orp-march-2026-page-3.jpg" target="_blank" rel="noopener"><img src="images/lrmds-orp-march-2026-page-3.jpg" alt="LRMDS ORP March 2026 page 3"></a>
+            <a class="month-page" href="images/lrmds-orp-march-2026-page-4.jpg" target="_blank" rel="noopener"><img src="images/lrmds-orp-march-2026-page-4.jpg" alt="LRMDS ORP March 2026 page 4"></a>
+          </div>
+        </div>
+        <div class="month-row">
+          <div class="month-row-label">May 2026</div>
+          <div class="month-row-pages">
+            <a class="month-page" href="images/lrmds-orp-may-2026-page-1.jpg" target="_blank" rel="noopener"><img src="images/lrmds-orp-may-2026-page-1.jpg" alt="LRMDS ORP May 2026 page 1"></a>
+            <a class="month-page" href="images/lrmds-orp-may-2026-page-2.jpg" target="_blank" rel="noopener"><img src="images/lrmds-orp-may-2026-page-2.jpg" alt="LRMDS ORP May 2026 page 2"></a>
+            <a class="month-page" href="images/lrmds-orp-may-2026-page-3.jpg" target="_blank" rel="noopener"><img src="images/lrmds-orp-may-2026-page-3.jpg" alt="LRMDS ORP May 2026 page 3"></a>
+            <a class="month-page" href="images/lrmds-orp-may-2026-page-4.jpg" target="_blank" rel="noopener"><img src="images/lrmds-orp-may-2026-page-4.jpg" alt="LRMDS ORP May 2026 page 4"></a>
+          </div>
+        </div>
+        <div class="month-row">
+          <div class="month-row-label">June 2026</div>
+          <div class="month-row-pages">
+            <a class="month-page" href="images/lrmds-orp-june-2026-page-1.jpg" target="_blank" rel="noopener"><img src="images/lrmds-orp-june-2026-page-1.jpg" alt="LRMDS ORP June 2026 page 1"></a>
+            <a class="month-page" href="images/lrmds-orp-june-2026-page-2.jpg" target="_blank" rel="noopener"><img src="images/lrmds-orp-june-2026-page-2.jpg" alt="LRMDS ORP June 2026 page 2"></a>
+            <a class="month-page" href="images/lrmds-orp-june-2026-page-3.jpg" target="_blank" rel="noopener"><img src="images/lrmds-orp-june-2026-page-3.jpg" alt="LRMDS ORP June 2026 page 3"></a>
+            <a class="month-page" href="images/lrmds-orp-june-2026-page-4.jpg" target="_blank" rel="noopener"><img src="images/lrmds-orp-june-2026-page-4.jpg" alt="LRMDS ORP June 2026 page 4"></a>
+          </div>
+        </div>
+        <div class="month-row">
+          <div class="month-row-label">July 2026</div>
+          <div class="month-row-pages">
+            <a class="month-page" href="images/lrmds-orp-july-2026-page-1.jpg" target="_blank" rel="noopener"><img src="images/lrmds-orp-july-2026-page-1.jpg" alt="LRMDS ORP July 2026 page 1"></a>
+            <a class="month-page" href="images/lrmds-orp-july-2026-page-2.jpg" target="_blank" rel="noopener"><img src="images/lrmds-orp-july-2026-page-2.jpg" alt="LRMDS ORP July 2026 page 2"></a>
+            <a class="month-page" href="images/lrmds-orp-july-2026-page-3.jpg" target="_blank" rel="noopener"><img src="images/lrmds-orp-july-2026-page-3.jpg" alt="LRMDS ORP July 2026 page 3"></a>
+            <a class="month-page" href="images/lrmds-orp-july-2026-page-4.jpg" target="_blank" rel="noopener"><img src="images/lrmds-orp-july-2026-page-4.jpg" alt="LRMDS ORP July 2026 page 4"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="in-action">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-num">V</span>
+      <div>
+        <p class="kicker">Chest Five</p>
+        <h2>In-Action</h2>
+      </div>
+    </div>
+    <div class="section-body">
+      <p>In-Action is the ship's log — photos, stories, and evidence of the strategy being carried out on the ground, across schools, offices, and communities.</p>
+      <div class="month-table">
+        <div class="month-row">
+          <div class="month-row-label">February 2026</div>
+          <div class="month-row-pages">
+            <a class="month-page" href="images/in-action-february-2026.jpg" target="_blank" rel="noopener"><img src="images/in-action-february-2026.jpg" alt="In-Action February 2026"></a>
+          </div>
+        </div>
+        <div class="month-row">
+          <div class="month-row-label">March 2026</div>
+          <div class="month-row-pages">
+            <a class="month-page" href="images/in-action-march-2026.jpg" target="_blank" rel="noopener"><img src="images/in-action-march-2026.jpg" alt="In-Action March 2026"></a>
+          </div>
+        </div>
+        <div class="month-row">
+          <div class="month-row-label">May 2026</div>
+          <div class="month-row-pages">
+            <a class="month-page" href="images/in-action-may-2026.jpg" target="_blank" rel="noopener"><img src="images/in-action-may-2026.jpg" alt="In-Action May 2026"></a>
+          </div>
+        </div>
+        <div class="month-row">
+          <div class="month-row-label">June 2026</div>
+          <div class="month-row-pages">
+            <a class="month-page" href="images/in-action-june-2026.jpg" target="_blank" rel="noopener"><img src="images/in-action-june-2026.jpg" alt="In-Action June 2026"></a>
+          </div>
+        </div>
+        <div class="month-row">
+          <div class="month-row-label">July 2026</div>
+          <div class="month-row-pages">
+            <a class="month-page" href="images/in-action-july-2026.jpg" target="_blank" rel="noopener"><img src="images/in-action-july-2026.jpg" alt="In-Action July 2026"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="org-chart">
+  <div class="section-inner">
+    <div class="section-head">
+      <span class="section-num">VI</span>
+      <div>
+        <p class="kicker">The Crew</p>
+        <h2>Organizational Chart</h2>
+      </div>
+    </div>
+    <div class="section-body">
+      <p>The captain and crew steering this journey.</p>
+    </div>
+    <div class="org-chart">
+      <div class="org-node">
+        <div class="org-photo"><img src="images/ellen-c-macaraeg.jpg" alt="Ellen C. Macaraeg"></div>
+        <div class="org-name">Ellen C. Macaraeg, EdD</div>
+        <div class="org-role">Education Program Supervisor</div>
+      </div>
+      <div class="org-connector"></div>
+      <div class="org-row">
+        <div class="org-node">
+          <div class="org-photo"><img src="images/racy-v-troy.jpg" alt="Racy V. Troy"></div>
+          <div class="org-name">Racy V. Troy</div>
+          <div class="org-role">Project Development Officer II</div>
+        </div>
+        <div class="org-node">
+          <div class="org-photo"><img src="images/ronnie-s-fernandez.jpg" alt="Ronnie S. Fernandez"></div>
+          <div class="org-name">Ronnie S. Fernandez</div>
+          <div class="org-role">Division Librarian II</div>
+        </div>
+        <div class="org-node">
+          <div class="org-photo"><img src="images/erma-m-hipolito.jpg" alt="Erma M. Hipolito"></div>
+          <div class="org-name">Erma M. Hipolito</div>
+          <div class="org-role">Administrative Support Staff</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="ocean-bg">
+  <span class="brand-text logo-script">PGS Journey</span>
+  Department of Education · Schools Division Office of Balanga City<br>
+  Talent and Learning Ecosystem Development
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
