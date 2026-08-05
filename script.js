@@ -541,11 +541,72 @@
   }
   window.addEventListener('resize', onResize);
 
+  // ---------- fireworks celebration (island 2028) ----------
+  var fireworks = [];
+  var fireworkColors = [0xffd54f, 0xff6b6b, 0x4fd1c5, 0xffffff, 0xff9f43, 0x74b9ff, 0xe4d6a6];
+  var fireworkOrigin = stops[2028].clone().add(new THREE.Vector3(0, islandTops[2028] + 95, 0));
+  var dockedAt2028 = false;
+  var nextFireworkTime = 0;
+
+  function spawnFirework(origin){
+    var count = 90;
+    var positions = new Float32Array(count * 3);
+    var velocities = [];
+    var color = fireworkColors[Math.floor(Math.random() * fireworkColors.length)];
+    var spread = 8;
+    for (var i = 0; i < count; i++){
+      positions[i * 3] = origin.x + (Math.random() - 0.5) * spread;
+      positions[i * 3 + 1] = origin.y + (Math.random() - 0.5) * spread;
+      positions[i * 3 + 2] = origin.z + (Math.random() - 0.5) * spread;
+      var theta = Math.random() * Math.PI * 2;
+      var phi = Math.acos((Math.random() * 2) - 1);
+      var speed = 14 + Math.random() * 12;
+      velocities.push(new THREE.Vector3(
+        Math.sin(phi) * Math.cos(theta) * speed,
+        Math.sin(phi) * Math.sin(theta) * speed,
+        Math.cos(phi) * speed
+      ));
+    }
+    var geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    var mat = new THREE.PointsMaterial({ color: color, size: 3.4, transparent: true, opacity: 1, depthWrite: false });
+    var points = new THREE.Points(geo, mat);
+    scene.add(points);
+    fireworks.push({ points: points, velocities: velocities, age: 0, life: 1.7 + Math.random() * 0.5 });
+  }
+
+  function updateFireworks(dt){
+    for (var fi = fireworks.length - 1; fi >= 0; fi--){
+      var fw = fireworks[fi];
+      fw.age += dt;
+      var posAttr = fw.points.geometry.attributes.position;
+      for (var pi = 0; pi < fw.velocities.length; pi++){
+        var vel = fw.velocities[pi];
+        vel.y -= 16 * dt; // gravity
+        posAttr.array[pi * 3] += vel.x * dt;
+        posAttr.array[pi * 3 + 1] += vel.y * dt;
+        posAttr.array[pi * 3 + 2] += vel.z * dt;
+      }
+      posAttr.needsUpdate = true;
+      var lifeRatio = fw.age / fw.life;
+      fw.points.material.opacity = Math.max(0, 1 - lifeRatio);
+      if (fw.age >= fw.life){
+        scene.remove(fw.points);
+        fw.points.geometry.dispose();
+        fw.points.material.dispose();
+        fireworks.splice(fi, 1);
+      }
+    }
+  }
+
   // ---------- animation loop ----------
   var clock = new THREE.Clock();
+  var lastElapsed = 0;
   function animate(){
     requestAnimationFrame(animate);
     var t = clock.getElapsedTime();
+    var dt = Math.min(t - lastElapsed, 0.1);
+    lastElapsed = t;
 
     // waves
     for (var i = 0; i < oceanPos.count; i++){
@@ -574,6 +635,20 @@
     ship.position.y = Math.sin(t * 1.8) * 1.6;
     ship.rotation.z = Math.sin(t * 1.3) * 0.035;
     ship.rotation.x = Math.sin(t * 1.05) * 0.02;
+
+    // fireworks celebration — the ship has reached island 2028
+    var atPort2028 = (currentYear === 2028 && dist <= 0.6);
+    if (atPort2028 && !dockedAt2028){
+      dockedAt2028 = true;
+      nextFireworkTime = t; // burst right away on arrival
+    } else if (!atPort2028){
+      dockedAt2028 = false;
+    }
+    if (dockedAt2028 && t >= nextFireworkTime){
+      spawnFirework(fireworkOrigin);
+      nextFireworkTime = t + 0.9 + Math.random() * 1.1;
+    }
+    updateFireworks(dt);
 
     // gentle camera drift for parallax life
     camera.position.x = Math.sin(t * 0.06) * 14;
