@@ -9,6 +9,39 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="chestWood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a2703f"/>
+      <stop offset="55%" stop-color="#7c4f28"/>
+      <stop offset="100%" stop-color="#5a3a1f"/>
+    </linearGradient>
+    <linearGradient id="chestWoodLid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b17e48"/>
+      <stop offset="60%" stop-color="#8a5a30"/>
+      <stop offset="100%" stop-color="#6b4226"/>
+    </linearGradient>
+    <linearGradient id="chestMetal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f6d78a"/>
+      <stop offset="45%" stop-color="#caa14a"/>
+      <stop offset="100%" stop-color="#8a6220"/>
+    </linearGradient>
+    <linearGradient id="chestGold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fbe7ad"/>
+      <stop offset="100%" stop-color="#d9a635"/>
+    </linearGradient>
+    <linearGradient id="chestInterior" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a2412"/>
+      <stop offset="100%" stop-color="#120a04"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<audio id="bg-music" src="audio/land-ahoy.mp3" loop preload="auto"></audio>
+<button id="sound-toggle" class="sound-toggle" type="button" aria-label="Toggle background music" aria-pressed="false">
+  <svg class="icon-sound-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor"/><path d="M16.5 8.5a5 5 0 0 1 0 7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M19 6a9 9 0 0 1 0 12" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+  <svg class="icon-sound-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor"/><path d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+</button>
 
 <header class="nav">
   <div class="brand">
@@ -47,36 +80,401 @@
     </div>
     <div class="chest-grid">
       <a href="#strategy-map" class="chest">
-        <div class="chest-ring"></div><div class="chest-ring right"></div>
-        <div class="chest-box"></div>
+        <div class="chest-3d">
+          <div class="chest-glow"></div>
+          <div class="chest-closed">
+            <svg viewBox="0 0 200 172" preserveAspectRatio="xMidYMid meet">
+              <rect x="20" y="162" width="14" height="10" rx="2" fill="#3a2513"/>
+              <rect x="166" y="162" width="14" height="10" rx="2" fill="#3a2513"/>
+              <path d="M8,54 L8,28 C8,6 26,-6 50,-6 L150,-6 C174,-6 192,6 192,28 L192,54 Z" fill="url(#chestWoodLid)" stroke="#3a2513" stroke-width="3"/>
+              <defs>
+                <clipPath id="lidClipClosed-strategy">
+                  <path d="M8,54 L8,28 C8,6 26,-6 50,-6 L150,-6 C174,-6 192,6 192,28 L192,54 Z"/>
+                </clipPath>
+              </defs>
+              <g clip-path="url(#lidClipClosed-strategy)">
+                <rect x="34" y="-6" width="18" height="60" fill="url(#chestMetal)"/>
+                <rect x="148" y="-6" width="18" height="60" fill="url(#chestMetal)"/>
+                <rect x="8" y="42" width="184" height="12" fill="url(#chestMetal)"/>
+              </g>
+              <rect x="8" y="46" width="184" height="116" rx="10" fill="url(#chestWood)" stroke="#3a2513" stroke-width="3"/>
+              <rect x="8" y="134" width="184" height="14" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <rect x="34" y="46" width="18" height="116" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <rect x="148" y="46" width="18" height="116" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <circle cx="43" cy="58" r="2.6" fill="#5a4018"/>
+              <circle cx="43" cy="152" r="2.6" fill="#5a4018"/>
+              <circle cx="157" cy="58" r="2.6" fill="#5a4018"/>
+              <circle cx="157" cy="152" r="2.6" fill="#5a4018"/>
+              <rect x="84" y="42" width="32" height="26" rx="4" fill="url(#chestGold)" stroke="#3a2513" stroke-width="2.5"/>
+              <circle cx="100" cy="52" r="4" fill="#5a4018"/>
+              <rect x="98" y="54" width="4" height="8" fill="#5a4018"/>
+            </svg>
+          </div>
+          <div class="chest-open">
+            <svg viewBox="0 0 200 172" preserveAspectRatio="xMidYMid meet">
+              <rect x="20" y="162" width="14" height="10" rx="2" fill="#3a2513"/>
+              <rect x="166" y="162" width="14" height="10" rx="2" fill="#3a2513"/>
+              <path d="M20,26 L20,10 C20,-2 34,-10 54,-10 L146,-10 C166,-10 180,-2 180,10 L180,26 Z" fill="url(#chestWoodLid)" stroke="#3a2513" stroke-width="3"/>
+              <defs>
+                <clipPath id="lidClipOpen-strategy">
+                  <path d="M20,26 L20,10 C20,-2 34,-10 54,-10 L146,-10 C166,-10 180,-2 180,10 L180,26 Z"/>
+                </clipPath>
+              </defs>
+              <g clip-path="url(#lidClipOpen-strategy)">
+                <rect x="42" y="-10" width="14" height="40" fill="url(#chestMetal)"/>
+                <rect x="144" y="-10" width="14" height="40" fill="url(#chestMetal)"/>
+              </g>
+              <rect x="86" y="16" width="28" height="10" rx="3" fill="url(#chestGold)" stroke="#3a2513" stroke-width="2"/>
+              <rect x="8" y="46" width="184" height="116" rx="10" fill="url(#chestWood)" stroke="#3a2513" stroke-width="3"/>
+              <rect x="8" y="134" width="184" height="14" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <rect x="34" y="46" width="18" height="116" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <rect x="148" y="46" width="18" height="116" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <circle cx="43" cy="58" r="2.6" fill="#5a4018"/>
+              <circle cx="43" cy="152" r="2.6" fill="#5a4018"/>
+              <circle cx="157" cy="58" r="2.6" fill="#5a4018"/>
+              <circle cx="157" cy="152" r="2.6" fill="#5a4018"/>
+              <path d="M8,46 C8,30 26,20 50,20 L150,20 C174,20 192,30 192,46 Z" fill="url(#chestInterior)"/>
+              <ellipse cx="55" cy="42" rx="20" ry="11" fill="url(#chestGold)" stroke="#7a5a1a" stroke-width="1.8"/>
+              <ellipse cx="90" cy="34" rx="22" ry="12" fill="url(#chestGold)" stroke="#7a5a1a" stroke-width="1.8"/>
+              <ellipse cx="125" cy="40" rx="21" ry="11" fill="url(#chestGold)" stroke="#7a5a1a" stroke-width="1.8"/>
+              <ellipse cx="150" cy="48" rx="18" ry="10" fill="#f0cf6a" stroke="#7a5a1a" stroke-width="1.6"/>
+              <ellipse cx="70" cy="50" rx="19" ry="10" fill="#f0cf6a" stroke="#7a5a1a" stroke-width="1.6"/>
+              <ellipse cx="105" cy="52" rx="20" ry="10" fill="#e8bf5a" stroke="#7a5a1a" stroke-width="1.6"/>
+              <ellipse cx="45" cy="30" rx="15" ry="8" fill="#e8bf5a" stroke="#7a5a1a" stroke-width="1.4"/>
+              <ellipse cx="140" cy="26" rx="16" ry="8" fill="#f6d78a" stroke="#7a5a1a" stroke-width="1.4"/>
+              <path d="M84,26 L90,10 C91,8 93,8 94,10 L100,20 L106,10 C107,8 109,8 110,10 L116,26 Z" fill="url(#chestGold)" stroke="#7a5a1a" stroke-width="1.6"/>
+              <rect x="82" y="24" width="36" height="8" rx="2" fill="url(#chestGold)" stroke="#7a5a1a" stroke-width="1.6"/>
+              <circle cx="92" cy="16" r="2.2" fill="#d6304a"/>
+              <circle cx="108" cy="16" r="2.2" fill="#2a6fd6"/>
+              <path d="M38,44 L45,36 L52,44 L45,54 Z" fill="#2a6fd6" stroke="#12345a" stroke-width="1.3"/>
+              <path d="M148,40 L156,32 L164,40 L156,50 Z" fill="#d6304a" stroke="#6e1220" stroke-width="1.3"/>
+              <path d="M118,50 L124,44 L130,50 L124,58 Z" fill="#2a9d8f" stroke="#0f4038" stroke-width="1.2"/>
+              <rect x="84" y="42" width="32" height="26" rx="4" fill="url(#chestGold)" stroke="#3a2513" stroke-width="2.5"/>
+              <circle cx="100" cy="52" r="4" fill="#5a4018"/>
+              <rect x="98" y="54" width="4" height="8" fill="#5a4018"/>
+            </svg>
+          </div>
+        </div>
         <div class="chest-label">Strategy Map</div>
         <div class="chest-desc">Our destination — the vision and strategic objectives guiding the voyage.</div>
       </a>
       <a href="#roadmap" class="chest">
-        <div class="chest-ring"></div><div class="chest-ring right"></div>
-        <div class="chest-box"></div>
+        <div class="chest-3d">
+          <div class="chest-glow"></div>
+          <div class="chest-closed">
+            <svg viewBox="0 0 200 172" preserveAspectRatio="xMidYMid meet">
+              <rect x="20" y="162" width="14" height="10" rx="2" fill="#3a2513"/>
+              <rect x="166" y="162" width="14" height="10" rx="2" fill="#3a2513"/>
+              <path d="M8,54 L8,28 C8,6 26,-6 50,-6 L150,-6 C174,-6 192,6 192,28 L192,54 Z" fill="url(#chestWoodLid)" stroke="#3a2513" stroke-width="3"/>
+              <defs>
+                <clipPath id="lidClipClosed-roadmap">
+                  <path d="M8,54 L8,28 C8,6 26,-6 50,-6 L150,-6 C174,-6 192,6 192,28 L192,54 Z"/>
+                </clipPath>
+              </defs>
+              <g clip-path="url(#lidClipClosed-roadmap)">
+                <rect x="34" y="-6" width="18" height="60" fill="url(#chestMetal)"/>
+                <rect x="148" y="-6" width="18" height="60" fill="url(#chestMetal)"/>
+                <rect x="8" y="42" width="184" height="12" fill="url(#chestMetal)"/>
+              </g>
+              <rect x="8" y="46" width="184" height="116" rx="10" fill="url(#chestWood)" stroke="#3a2513" stroke-width="3"/>
+              <rect x="8" y="134" width="184" height="14" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <rect x="34" y="46" width="18" height="116" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <rect x="148" y="46" width="18" height="116" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <circle cx="43" cy="58" r="2.6" fill="#5a4018"/>
+              <circle cx="43" cy="152" r="2.6" fill="#5a4018"/>
+              <circle cx="157" cy="58" r="2.6" fill="#5a4018"/>
+              <circle cx="157" cy="152" r="2.6" fill="#5a4018"/>
+              <rect x="84" y="42" width="32" height="26" rx="4" fill="url(#chestGold)" stroke="#3a2513" stroke-width="2.5"/>
+              <circle cx="100" cy="52" r="4" fill="#5a4018"/>
+              <rect x="98" y="54" width="4" height="8" fill="#5a4018"/>
+            </svg>
+          </div>
+          <div class="chest-open">
+            <svg viewBox="0 0 200 172" preserveAspectRatio="xMidYMid meet">
+              <rect x="20" y="162" width="14" height="10" rx="2" fill="#3a2513"/>
+              <rect x="166" y="162" width="14" height="10" rx="2" fill="#3a2513"/>
+              <path d="M20,26 L20,10 C20,-2 34,-10 54,-10 L146,-10 C166,-10 180,-2 180,10 L180,26 Z" fill="url(#chestWoodLid)" stroke="#3a2513" stroke-width="3"/>
+              <defs>
+                <clipPath id="lidClipOpen-roadmap">
+                  <path d="M20,26 L20,10 C20,-2 34,-10 54,-10 L146,-10 C166,-10 180,-2 180,10 L180,26 Z"/>
+                </clipPath>
+              </defs>
+              <g clip-path="url(#lidClipOpen-roadmap)">
+                <rect x="42" y="-10" width="14" height="40" fill="url(#chestMetal)"/>
+                <rect x="144" y="-10" width="14" height="40" fill="url(#chestMetal)"/>
+              </g>
+              <rect x="86" y="16" width="28" height="10" rx="3" fill="url(#chestGold)" stroke="#3a2513" stroke-width="2"/>
+              <rect x="8" y="46" width="184" height="116" rx="10" fill="url(#chestWood)" stroke="#3a2513" stroke-width="3"/>
+              <rect x="8" y="134" width="184" height="14" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <rect x="34" y="46" width="18" height="116" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <rect x="148" y="46" width="18" height="116" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <circle cx="43" cy="58" r="2.6" fill="#5a4018"/>
+              <circle cx="43" cy="152" r="2.6" fill="#5a4018"/>
+              <circle cx="157" cy="58" r="2.6" fill="#5a4018"/>
+              <circle cx="157" cy="152" r="2.6" fill="#5a4018"/>
+              <path d="M8,46 C8,30 26,20 50,20 L150,20 C174,20 192,30 192,46 Z" fill="url(#chestInterior)"/>
+              <ellipse cx="55" cy="42" rx="20" ry="11" fill="url(#chestGold)" stroke="#7a5a1a" stroke-width="1.8"/>
+              <ellipse cx="90" cy="34" rx="22" ry="12" fill="url(#chestGold)" stroke="#7a5a1a" stroke-width="1.8"/>
+              <ellipse cx="125" cy="40" rx="21" ry="11" fill="url(#chestGold)" stroke="#7a5a1a" stroke-width="1.8"/>
+              <ellipse cx="150" cy="48" rx="18" ry="10" fill="#f0cf6a" stroke="#7a5a1a" stroke-width="1.6"/>
+              <ellipse cx="70" cy="50" rx="19" ry="10" fill="#f0cf6a" stroke="#7a5a1a" stroke-width="1.6"/>
+              <ellipse cx="105" cy="52" rx="20" ry="10" fill="#e8bf5a" stroke="#7a5a1a" stroke-width="1.6"/>
+              <ellipse cx="45" cy="30" rx="15" ry="8" fill="#e8bf5a" stroke="#7a5a1a" stroke-width="1.4"/>
+              <ellipse cx="140" cy="26" rx="16" ry="8" fill="#f6d78a" stroke="#7a5a1a" stroke-width="1.4"/>
+              <path d="M84,26 L90,10 C91,8 93,8 94,10 L100,20 L106,10 C107,8 109,8 110,10 L116,26 Z" fill="url(#chestGold)" stroke="#7a5a1a" stroke-width="1.6"/>
+              <rect x="82" y="24" width="36" height="8" rx="2" fill="url(#chestGold)" stroke="#7a5a1a" stroke-width="1.6"/>
+              <circle cx="92" cy="16" r="2.2" fill="#d6304a"/>
+              <circle cx="108" cy="16" r="2.2" fill="#2a6fd6"/>
+              <path d="M38,44 L45,36 L52,44 L45,54 Z" fill="#2a6fd6" stroke="#12345a" stroke-width="1.3"/>
+              <path d="M148,40 L156,32 L164,40 L156,50 Z" fill="#d6304a" stroke="#6e1220" stroke-width="1.3"/>
+              <path d="M118,50 L124,44 L130,50 L124,58 Z" fill="#2a9d8f" stroke="#0f4038" stroke-width="1.2"/>
+              <rect x="84" y="42" width="32" height="26" rx="4" fill="url(#chestGold)" stroke="#3a2513" stroke-width="2.5"/>
+              <circle cx="100" cy="52" r="4" fill="#5a4018"/>
+              <rect x="98" y="54" width="4" height="8" fill="#5a4018"/>
+            </svg>
+          </div>
+        </div>
         <div class="chest-label">Roadmap</div>
         <div class="chest-desc">The route — key milestones and timelines charted year by year.</div>
       </a>
       <a href="#scorecard" class="chest">
-        <div class="chest-ring"></div><div class="chest-ring right"></div>
-        <div class="chest-box"></div>
+        <div class="chest-3d">
+          <div class="chest-glow"></div>
+          <div class="chest-closed">
+            <svg viewBox="0 0 200 172" preserveAspectRatio="xMidYMid meet">
+              <rect x="20" y="162" width="14" height="10" rx="2" fill="#3a2513"/>
+              <rect x="166" y="162" width="14" height="10" rx="2" fill="#3a2513"/>
+              <path d="M8,54 L8,28 C8,6 26,-6 50,-6 L150,-6 C174,-6 192,6 192,28 L192,54 Z" fill="url(#chestWoodLid)" stroke="#3a2513" stroke-width="3"/>
+              <defs>
+                <clipPath id="lidClipClosed-scorecard">
+                  <path d="M8,54 L8,28 C8,6 26,-6 50,-6 L150,-6 C174,-6 192,6 192,28 L192,54 Z"/>
+                </clipPath>
+              </defs>
+              <g clip-path="url(#lidClipClosed-scorecard)">
+                <rect x="34" y="-6" width="18" height="60" fill="url(#chestMetal)"/>
+                <rect x="148" y="-6" width="18" height="60" fill="url(#chestMetal)"/>
+                <rect x="8" y="42" width="184" height="12" fill="url(#chestMetal)"/>
+              </g>
+              <rect x="8" y="46" width="184" height="116" rx="10" fill="url(#chestWood)" stroke="#3a2513" stroke-width="3"/>
+              <rect x="8" y="134" width="184" height="14" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <rect x="34" y="46" width="18" height="116" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <rect x="148" y="46" width="18" height="116" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <circle cx="43" cy="58" r="2.6" fill="#5a4018"/>
+              <circle cx="43" cy="152" r="2.6" fill="#5a4018"/>
+              <circle cx="157" cy="58" r="2.6" fill="#5a4018"/>
+              <circle cx="157" cy="152" r="2.6" fill="#5a4018"/>
+              <rect x="84" y="42" width="32" height="26" rx="4" fill="url(#chestGold)" stroke="#3a2513" stroke-width="2.5"/>
+              <circle cx="100" cy="52" r="4" fill="#5a4018"/>
+              <rect x="98" y="54" width="4" height="8" fill="#5a4018"/>
+            </svg>
+          </div>
+          <div class="chest-open">
+            <svg viewBox="0 0 200 172" preserveAspectRatio="xMidYMid meet">
+              <rect x="20" y="162" width="14" height="10" rx="2" fill="#3a2513"/>
+              <rect x="166" y="162" width="14" height="10" rx="2" fill="#3a2513"/>
+              <path d="M20,26 L20,10 C20,-2 34,-10 54,-10 L146,-10 C166,-10 180,-2 180,10 L180,26 Z" fill="url(#chestWoodLid)" stroke="#3a2513" stroke-width="3"/>
+              <defs>
+                <clipPath id="lidClipOpen-scorecard">
+                  <path d="M20,26 L20,10 C20,-2 34,-10 54,-10 L146,-10 C166,-10 180,-2 180,10 L180,26 Z"/>
+                </clipPath>
+              </defs>
+              <g clip-path="url(#lidClipOpen-scorecard)">
+                <rect x="42" y="-10" width="14" height="40" fill="url(#chestMetal)"/>
+                <rect x="144" y="-10" width="14" height="40" fill="url(#chestMetal)"/>
+              </g>
+              <rect x="86" y="16" width="28" height="10" rx="3" fill="url(#chestGold)" stroke="#3a2513" stroke-width="2"/>
+              <rect x="8" y="46" width="184" height="116" rx="10" fill="url(#chestWood)" stroke="#3a2513" stroke-width="3"/>
+              <rect x="8" y="134" width="184" height="14" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <rect x="34" y="46" width="18" height="116" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <rect x="148" y="46" width="18" height="116" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <circle cx="43" cy="58" r="2.6" fill="#5a4018"/>
+              <circle cx="43" cy="152" r="2.6" fill="#5a4018"/>
+              <circle cx="157" cy="58" r="2.6" fill="#5a4018"/>
+              <circle cx="157" cy="152" r="2.6" fill="#5a4018"/>
+              <path d="M8,46 C8,30 26,20 50,20 L150,20 C174,20 192,30 192,46 Z" fill="url(#chestInterior)"/>
+              <ellipse cx="55" cy="42" rx="20" ry="11" fill="url(#chestGold)" stroke="#7a5a1a" stroke-width="1.8"/>
+              <ellipse cx="90" cy="34" rx="22" ry="12" fill="url(#chestGold)" stroke="#7a5a1a" stroke-width="1.8"/>
+              <ellipse cx="125" cy="40" rx="21" ry="11" fill="url(#chestGold)" stroke="#7a5a1a" stroke-width="1.8"/>
+              <ellipse cx="150" cy="48" rx="18" ry="10" fill="#f0cf6a" stroke="#7a5a1a" stroke-width="1.6"/>
+              <ellipse cx="70" cy="50" rx="19" ry="10" fill="#f0cf6a" stroke="#7a5a1a" stroke-width="1.6"/>
+              <ellipse cx="105" cy="52" rx="20" ry="10" fill="#e8bf5a" stroke="#7a5a1a" stroke-width="1.6"/>
+              <ellipse cx="45" cy="30" rx="15" ry="8" fill="#e8bf5a" stroke="#7a5a1a" stroke-width="1.4"/>
+              <ellipse cx="140" cy="26" rx="16" ry="8" fill="#f6d78a" stroke="#7a5a1a" stroke-width="1.4"/>
+              <path d="M84,26 L90,10 C91,8 93,8 94,10 L100,20 L106,10 C107,8 109,8 110,10 L116,26 Z" fill="url(#chestGold)" stroke="#7a5a1a" stroke-width="1.6"/>
+              <rect x="82" y="24" width="36" height="8" rx="2" fill="url(#chestGold)" stroke="#7a5a1a" stroke-width="1.6"/>
+              <circle cx="92" cy="16" r="2.2" fill="#d6304a"/>
+              <circle cx="108" cy="16" r="2.2" fill="#2a6fd6"/>
+              <path d="M38,44 L45,36 L52,44 L45,54 Z" fill="#2a6fd6" stroke="#12345a" stroke-width="1.3"/>
+              <path d="M148,40 L156,32 L164,40 L156,50 Z" fill="#d6304a" stroke="#6e1220" stroke-width="1.3"/>
+              <path d="M118,50 L124,44 L130,50 L124,58 Z" fill="#2a9d8f" stroke="#0f4038" stroke-width="1.2"/>
+              <rect x="84" y="42" width="32" height="26" rx="4" fill="url(#chestGold)" stroke="#3a2513" stroke-width="2.5"/>
+              <circle cx="100" cy="52" r="4" fill="#5a4018"/>
+              <rect x="98" y="54" width="4" height="8" fill="#5a4018"/>
+            </svg>
+          </div>
+        </div>
         <div class="chest-label">Scorecard</div>
         <div class="chest-desc">The compass — measures and targets that tell us if we're on course.</div>
       </a>
       <div class="row2">
-        <a href="#orp" class="chest">
-          <div class="chest-ring"></div><div class="chest-ring right"></div>
-          <div class="chest-box"></div>
-          <div class="chest-label">ORP</div>
-          <div class="chest-desc">Operations Review Protocol — turning strategy into structure.</div>
-        </a>
-        <a href="#in-action" class="chest">
-          <div class="chest-ring"></div><div class="chest-ring right"></div>
-          <div class="chest-box"></div>
-          <div class="chest-label">In-Action</div>
-          <div class="chest-desc">The log book — stories and evidence of the strategy at work.</div>
-        </a>
+      <a href="#orp" class="chest">
+        <div class="chest-3d">
+          <div class="chest-glow"></div>
+          <div class="chest-closed">
+            <svg viewBox="0 0 200 172" preserveAspectRatio="xMidYMid meet">
+              <rect x="20" y="162" width="14" height="10" rx="2" fill="#3a2513"/>
+              <rect x="166" y="162" width="14" height="10" rx="2" fill="#3a2513"/>
+              <path d="M8,54 L8,28 C8,6 26,-6 50,-6 L150,-6 C174,-6 192,6 192,28 L192,54 Z" fill="url(#chestWoodLid)" stroke="#3a2513" stroke-width="3"/>
+              <defs>
+                <clipPath id="lidClipClosed-orp">
+                  <path d="M8,54 L8,28 C8,6 26,-6 50,-6 L150,-6 C174,-6 192,6 192,28 L192,54 Z"/>
+                </clipPath>
+              </defs>
+              <g clip-path="url(#lidClipClosed-orp)">
+                <rect x="34" y="-6" width="18" height="60" fill="url(#chestMetal)"/>
+                <rect x="148" y="-6" width="18" height="60" fill="url(#chestMetal)"/>
+                <rect x="8" y="42" width="184" height="12" fill="url(#chestMetal)"/>
+              </g>
+              <rect x="8" y="46" width="184" height="116" rx="10" fill="url(#chestWood)" stroke="#3a2513" stroke-width="3"/>
+              <rect x="8" y="134" width="184" height="14" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <rect x="34" y="46" width="18" height="116" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <rect x="148" y="46" width="18" height="116" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <circle cx="43" cy="58" r="2.6" fill="#5a4018"/>
+              <circle cx="43" cy="152" r="2.6" fill="#5a4018"/>
+              <circle cx="157" cy="58" r="2.6" fill="#5a4018"/>
+              <circle cx="157" cy="152" r="2.6" fill="#5a4018"/>
+              <rect x="84" y="42" width="32" height="26" rx="4" fill="url(#chestGold)" stroke="#3a2513" stroke-width="2.5"/>
+              <circle cx="100" cy="52" r="4" fill="#5a4018"/>
+              <rect x="98" y="54" width="4" height="8" fill="#5a4018"/>
+            </svg>
+          </div>
+          <div class="chest-open">
+            <svg viewBox="0 0 200 172" preserveAspectRatio="xMidYMid meet">
+              <rect x="20" y="162" width="14" height="10" rx="2" fill="#3a2513"/>
+              <rect x="166" y="162" width="14" height="10" rx="2" fill="#3a2513"/>
+              <path d="M20,26 L20,10 C20,-2 34,-10 54,-10 L146,-10 C166,-10 180,-2 180,10 L180,26 Z" fill="url(#chestWoodLid)" stroke="#3a2513" stroke-width="3"/>
+              <defs>
+                <clipPath id="lidClipOpen-orp">
+                  <path d="M20,26 L20,10 C20,-2 34,-10 54,-10 L146,-10 C166,-10 180,-2 180,10 L180,26 Z"/>
+                </clipPath>
+              </defs>
+              <g clip-path="url(#lidClipOpen-orp)">
+                <rect x="42" y="-10" width="14" height="40" fill="url(#chestMetal)"/>
+                <rect x="144" y="-10" width="14" height="40" fill="url(#chestMetal)"/>
+              </g>
+              <rect x="86" y="16" width="28" height="10" rx="3" fill="url(#chestGold)" stroke="#3a2513" stroke-width="2"/>
+              <rect x="8" y="46" width="184" height="116" rx="10" fill="url(#chestWood)" stroke="#3a2513" stroke-width="3"/>
+              <rect x="8" y="134" width="184" height="14" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <rect x="34" y="46" width="18" height="116" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <rect x="148" y="46" width="18" height="116" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <circle cx="43" cy="58" r="2.6" fill="#5a4018"/>
+              <circle cx="43" cy="152" r="2.6" fill="#5a4018"/>
+              <circle cx="157" cy="58" r="2.6" fill="#5a4018"/>
+              <circle cx="157" cy="152" r="2.6" fill="#5a4018"/>
+              <path d="M8,46 C8,30 26,20 50,20 L150,20 C174,20 192,30 192,46 Z" fill="url(#chestInterior)"/>
+              <ellipse cx="55" cy="42" rx="20" ry="11" fill="url(#chestGold)" stroke="#7a5a1a" stroke-width="1.8"/>
+              <ellipse cx="90" cy="34" rx="22" ry="12" fill="url(#chestGold)" stroke="#7a5a1a" stroke-width="1.8"/>
+              <ellipse cx="125" cy="40" rx="21" ry="11" fill="url(#chestGold)" stroke="#7a5a1a" stroke-width="1.8"/>
+              <ellipse cx="150" cy="48" rx="18" ry="10" fill="#f0cf6a" stroke="#7a5a1a" stroke-width="1.6"/>
+              <ellipse cx="70" cy="50" rx="19" ry="10" fill="#f0cf6a" stroke="#7a5a1a" stroke-width="1.6"/>
+              <ellipse cx="105" cy="52" rx="20" ry="10" fill="#e8bf5a" stroke="#7a5a1a" stroke-width="1.6"/>
+              <ellipse cx="45" cy="30" rx="15" ry="8" fill="#e8bf5a" stroke="#7a5a1a" stroke-width="1.4"/>
+              <ellipse cx="140" cy="26" rx="16" ry="8" fill="#f6d78a" stroke="#7a5a1a" stroke-width="1.4"/>
+              <path d="M84,26 L90,10 C91,8 93,8 94,10 L100,20 L106,10 C107,8 109,8 110,10 L116,26 Z" fill="url(#chestGold)" stroke="#7a5a1a" stroke-width="1.6"/>
+              <rect x="82" y="24" width="36" height="8" rx="2" fill="url(#chestGold)" stroke="#7a5a1a" stroke-width="1.6"/>
+              <circle cx="92" cy="16" r="2.2" fill="#d6304a"/>
+              <circle cx="108" cy="16" r="2.2" fill="#2a6fd6"/>
+              <path d="M38,44 L45,36 L52,44 L45,54 Z" fill="#2a6fd6" stroke="#12345a" stroke-width="1.3"/>
+              <path d="M148,40 L156,32 L164,40 L156,50 Z" fill="#d6304a" stroke="#6e1220" stroke-width="1.3"/>
+              <path d="M118,50 L124,44 L130,50 L124,58 Z" fill="#2a9d8f" stroke="#0f4038" stroke-width="1.2"/>
+              <rect x="84" y="42" width="32" height="26" rx="4" fill="url(#chestGold)" stroke="#3a2513" stroke-width="2.5"/>
+              <circle cx="100" cy="52" r="4" fill="#5a4018"/>
+              <rect x="98" y="54" width="4" height="8" fill="#5a4018"/>
+            </svg>
+          </div>
+        </div>
+        <div class="chest-label">ORP</div>
+        <div class="chest-desc">Operations Review Protocol — turning strategy into structure.</div>
+      </a>
+      <a href="#in-action" class="chest">
+        <div class="chest-3d">
+          <div class="chest-glow"></div>
+          <div class="chest-closed">
+            <svg viewBox="0 0 200 172" preserveAspectRatio="xMidYMid meet">
+              <rect x="20" y="162" width="14" height="10" rx="2" fill="#3a2513"/>
+              <rect x="166" y="162" width="14" height="10" rx="2" fill="#3a2513"/>
+              <path d="M8,54 L8,28 C8,6 26,-6 50,-6 L150,-6 C174,-6 192,6 192,28 L192,54 Z" fill="url(#chestWoodLid)" stroke="#3a2513" stroke-width="3"/>
+              <defs>
+                <clipPath id="lidClipClosed-inaction">
+                  <path d="M8,54 L8,28 C8,6 26,-6 50,-6 L150,-6 C174,-6 192,6 192,28 L192,54 Z"/>
+                </clipPath>
+              </defs>
+              <g clip-path="url(#lidClipClosed-inaction)">
+                <rect x="34" y="-6" width="18" height="60" fill="url(#chestMetal)"/>
+                <rect x="148" y="-6" width="18" height="60" fill="url(#chestMetal)"/>
+                <rect x="8" y="42" width="184" height="12" fill="url(#chestMetal)"/>
+              </g>
+              <rect x="8" y="46" width="184" height="116" rx="10" fill="url(#chestWood)" stroke="#3a2513" stroke-width="3"/>
+              <rect x="8" y="134" width="184" height="14" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <rect x="34" y="46" width="18" height="116" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <rect x="148" y="46" width="18" height="116" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <circle cx="43" cy="58" r="2.6" fill="#5a4018"/>
+              <circle cx="43" cy="152" r="2.6" fill="#5a4018"/>
+              <circle cx="157" cy="58" r="2.6" fill="#5a4018"/>
+              <circle cx="157" cy="152" r="2.6" fill="#5a4018"/>
+              <rect x="84" y="42" width="32" height="26" rx="4" fill="url(#chestGold)" stroke="#3a2513" stroke-width="2.5"/>
+              <circle cx="100" cy="52" r="4" fill="#5a4018"/>
+              <rect x="98" y="54" width="4" height="8" fill="#5a4018"/>
+            </svg>
+          </div>
+          <div class="chest-open">
+            <svg viewBox="0 0 200 172" preserveAspectRatio="xMidYMid meet">
+              <rect x="20" y="162" width="14" height="10" rx="2" fill="#3a2513"/>
+              <rect x="166" y="162" width="14" height="10" rx="2" fill="#3a2513"/>
+              <path d="M20,26 L20,10 C20,-2 34,-10 54,-10 L146,-10 C166,-10 180,-2 180,10 L180,26 Z" fill="url(#chestWoodLid)" stroke="#3a2513" stroke-width="3"/>
+              <defs>
+                <clipPath id="lidClipOpen-inaction">
+                  <path d="M20,26 L20,10 C20,-2 34,-10 54,-10 L146,-10 C166,-10 180,-2 180,10 L180,26 Z"/>
+                </clipPath>
+              </defs>
+              <g clip-path="url(#lidClipOpen-inaction)">
+                <rect x="42" y="-10" width="14" height="40" fill="url(#chestMetal)"/>
+                <rect x="144" y="-10" width="14" height="40" fill="url(#chestMetal)"/>
+              </g>
+              <rect x="86" y="16" width="28" height="10" rx="3" fill="url(#chestGold)" stroke="#3a2513" stroke-width="2"/>
+              <rect x="8" y="46" width="184" height="116" rx="10" fill="url(#chestWood)" stroke="#3a2513" stroke-width="3"/>
+              <rect x="8" y="134" width="184" height="14" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <rect x="34" y="46" width="18" height="116" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <rect x="148" y="46" width="18" height="116" fill="url(#chestMetal)" stroke="#3a2513" stroke-width="1.5"/>
+              <circle cx="43" cy="58" r="2.6" fill="#5a4018"/>
+              <circle cx="43" cy="152" r="2.6" fill="#5a4018"/>
+              <circle cx="157" cy="58" r="2.6" fill="#5a4018"/>
+              <circle cx="157" cy="152" r="2.6" fill="#5a4018"/>
+              <path d="M8,46 C8,30 26,20 50,20 L150,20 C174,20 192,30 192,46 Z" fill="url(#chestInterior)"/>
+              <ellipse cx="55" cy="42" rx="20" ry="11" fill="url(#chestGold)" stroke="#7a5a1a" stroke-width="1.8"/>
+              <ellipse cx="90" cy="34" rx="22" ry="12" fill="url(#chestGold)" stroke="#7a5a1a" stroke-width="1.8"/>
+              <ellipse cx="125" cy="40" rx="21" ry="11" fill="url(#chestGold)" stroke="#7a5a1a" stroke-width="1.8"/>
+              <ellipse cx="150" cy="48" rx="18" ry="10" fill="#f0cf6a" stroke="#7a5a1a" stroke-width="1.6"/>
+              <ellipse cx="70" cy="50" rx="19" ry="10" fill="#f0cf6a" stroke="#7a5a1a" stroke-width="1.6"/>
+              <ellipse cx="105" cy="52" rx="20" ry="10" fill="#e8bf5a" stroke="#7a5a1a" stroke-width="1.6"/>
+              <ellipse cx="45" cy="30" rx="15" ry="8" fill="#e8bf5a" stroke="#7a5a1a" stroke-width="1.4"/>
+              <ellipse cx="140" cy="26" rx="16" ry="8" fill="#f6d78a" stroke="#7a5a1a" stroke-width="1.4"/>
+              <path d="M84,26 L90,10 C91,8 93,8 94,10 L100,20 L106,10 C107,8 109,8 110,10 L116,26 Z" fill="url(#chestGold)" stroke="#7a5a1a" stroke-width="1.6"/>
+              <rect x="82" y="24" width="36" height="8" rx="2" fill="url(#chestGold)" stroke="#7a5a1a" stroke-width="1.6"/>
+              <circle cx="92" cy="16" r="2.2" fill="#d6304a"/>
+              <circle cx="108" cy="16" r="2.2" fill="#2a6fd6"/>
+              <path d="M38,44 L45,36 L52,44 L45,54 Z" fill="#2a6fd6" stroke="#12345a" stroke-width="1.3"/>
+              <path d="M148,40 L156,32 L164,40 L156,50 Z" fill="#d6304a" stroke="#6e1220" stroke-width="1.3"/>
+              <path d="M118,50 L124,44 L130,50 L124,58 Z" fill="#2a9d8f" stroke="#0f4038" stroke-width="1.2"/>
+              <rect x="84" y="42" width="32" height="26" rx="4" fill="url(#chestGold)" stroke="#3a2513" stroke-width="2.5"/>
+              <circle cx="100" cy="52" r="4" fill="#5a4018"/>
+              <rect x="98" y="54" width="4" height="8" fill="#5a4018"/>
+            </svg>
+          </div>
+        </div>
+        <div class="chest-label">In-Action</div>
+        <div class="chest-desc">The log book — stories and evidence of the strategy at work.</div>
+      </a>
       </div>
     </div>
   </div>

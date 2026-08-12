@@ -665,3 +665,81 @@
   }
   animate();
 })();
+// ---------- background music: autoplay-loop with graceful fallback ----------
+(function(){
+  var music = document.getElementById('bg-music');
+  var toggle = document.getElementById('sound-toggle');
+  if (!music || !toggle) return;
+  music.volume = 0.55;
+  var userPaused = false;
+
+  function setPressed(isPlaying){
+    toggle.setAttribute('aria-pressed', isPlaying ? 'true' : 'false');
+  }
+
+  function tryPlay(){
+    var p = music.play();
+    if (p && p.catch){
+      p.then(function(){ setPressed(true); }).catch(function(){
+        setPressed(false);
+      });
+    } else {
+      setPressed(true);
+    }
+  }
+
+  // Attempt autoplay immediately on load (will succeed if browser allows it).
+  tryPlay();
+
+  // Most browsers block audio-with-sound autoplay until a user gesture;
+  // start music on the very first interaction anywhere on the page.
+  function firstInteractionPlay(){
+    if (!userPaused && music.paused){
+      tryPlay();
+    }
+    document.removeEventListener('click', firstInteractionPlay);
+    document.removeEventListener('keydown', firstInteractionPlay);
+    document.removeEventListener('touchstart', firstInteractionPlay);
+  }
+  document.addEventListener('click', firstInteractionPlay, { once: true });
+  document.addEventListener('keydown', firstInteractionPlay, { once: true });
+  document.addEventListener('touchstart', firstInteractionPlay, { once: true });
+
+  toggle.addEventListener('click', function(e){
+    e.stopPropagation();
+    if (music.paused){
+      userPaused = false;
+      tryPlay();
+    } else {
+      userPaused = true;
+      music.pause();
+      setPressed(false);
+    }
+  });
+})();
+
+// ---------- treasure chest open-then-navigate interaction ----------
+(function(){
+  var chestLinks = document.querySelectorAll('.chest');
+  chestLinks.forEach(function(link){
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      if (link.classList.contains('open')) return; // ignore rapid re-clicks mid-animation
+      var targetSelector = link.getAttribute('href');
+      link.classList.add('open');
+      setTimeout(function(){
+        var targetEl = targetSelector ? document.querySelector(targetSelector) : null;
+        if (targetEl){
+          targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (window.history && history.pushState){
+            history.pushState(null, '', targetSelector);
+          }
+        }
+      }, 620);
+      // close the lid again after the visit, ready for next time
+      setTimeout(function(){
+        link.classList.remove('open');
+      }, 1600);
+    });
+  });
+})();
